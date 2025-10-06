@@ -34,9 +34,3 @@ Implementar um sistema CRUD (Create, Read, Update, Delete) que possibilite ao us
 
 * Comunicação entre PHP e banco de dados via queries SQL (**INSERT, SELECT, UPDATE, DELETE**).
 * Garantia da integridade referencial (exclusão segura de países e cidades).
-
-
-## 🧩 Tecnologias Utilizadas
-
-
-
