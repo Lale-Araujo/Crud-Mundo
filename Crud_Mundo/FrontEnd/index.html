@@ -5,9 +5,71 @@
 <title>CRUD Atlas</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
+
+<!-- CARD CENTRAL DE CRUD -->
+<div class="crud-card">
+  <div class="crud-card-container">
+
+    <h2 class="crud-card-title">Gerenciar Países</h2>
+
+    <!-- Select com todos os países -->
+    <label>Escolher País:</label>
+    <select id="selectPais"></select>
+
+    <br><br>
+
+    <!-- Campos de edição -->
+    <label>Nome do País:</label>
+    <input type="text" id="editNome">
+
+    <label>Continente:</label>
+    <input type="text" id="editContinente">
+
+    <label>População:</label>
+    <input type="number" id="editPop">
+
+    <label>Idioma:</label>
+    <input type="text" id="editIdioma">
+
+    <label>Capital:</label>
+    <input type="text" id="editCapital">
+
+    <br><br>
+
+    <button id="btnSalvarEdicao">Salvar Alterações</button>
+
+    <button id="btnFecharCard" class="close-card-btn">
+        <i class="fas fa-times"></i>
+    </button>
+
+  </div>
+</div>
+
+<!-- Painel de CRUD -->
+<div class="crud-panel">
+  <div class="crud-container">
+    <br><br><br>
+    <h1>Administração</h1>
+    <br><br>
+    <p class="crud-subtitle">
+      <strong>Selecione uma operação:</strong>
+    </p>
+
+    <div class="crud-actions">
+      <button class="crud-action-btn" id="btnCrudPaises">Gerenciar Países</button>
+      <button class="crud-action-btn" id="btnCrudCidades">Gerenciar Cidades</button>
+    </div>
+
+  </div>
+
+  <button class="crud-close-btn">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+
+<!-- MAPA MUNDO -->
 <div class="world-map">
   <div class="map-container">
     <?xml version="1.0"?>
@@ -960,41 +1022,63 @@
  </circle>
 </svg>
   </div>
-</div>
+</div>  
 
+<!-- SIDE PANEL -->
 <div class="side-panel">
   <div class="container">
-    <h1 class="country-name">Germany</h1>
+
+    <!-- Nome do País -->
+    <h1 class="country-name">Selecione um país</h1>
+
+    <!-- Bandeira -->
     <img src="./flag.png" class="country-flag">
+
     <ul>
-      <li>
-        <strong>Capital City:</strong>
-        <span class="city"></span>
-      </li>
-      <li>
-        <strong>Area:</strong>
-        <span class="area"></span>
-      </li>
-      <li>
-        <strong>Currencies:</strong>
-        <ul class="currencies"></ul>
-      </li>
-      <li>
-        <strong>Languages:</strong>
-        <ul class="languages"></ul>
-      </li>
+      <li><strong>Capital:</strong> <span class="city">—</span></li>
+      <li><strong>Continente:</strong> <span class="continent">—</span></li>
+      <li><strong>População:</strong> <span class="population">—</span></li>
+      <li><strong>Área:</strong> <span class="area">—</span></li>
+      <li><strong>Idiomas:</strong> <ul class="languages"></ul></li>
+      <li><strong>Moedas:</strong> <ul class="currencies"></ul></li>
+      <li><strong>Cidades cadastradas:</strong> <ul class="city-list"></ul></li>
     </ul>
+<br><br><br><br><br>
+    <!-- SEÇÃO CLIMA -->
+    <div class="weather-panel">
+      <h1 class="country-name">Clima da Capital:</h1>
+      <ul>
+        <li><strong>Temperatura:</strong> <span class="weather-temp">—</span>°C</li>
+        <li><strong>Umidade:</strong> <span class="weather-humidity">—</span>%</li>
+        <li><strong>Condição:</strong> <span class="weather-desc">—</span></li>
+        <li><strong>Vento:</strong> <span class="weather-wind">—</span> m/s</li>
+      </ul>
+    </div>
+
   </div>
+
   <button class="close-btn">
     <i class="fas fa-times"></i>
   </button>
+
   <h2 class="loading">Loading...</h2>
+
+  <!-- Painel de Todos os Países -->
+ 
 </div>
 
+<!-- CONTROLES DE ZOOM -->
 <div class="zoom-controls">
   <button class="zoom-in">+</button>
   <button class="zoom-out">-</button>
   <p class="zoom-value">100%</p>
 </div>
 
+<!-- Botão para abrir o painel de CRUD -->
+<button class="crud-btn">
+  <i class="fas fa-pen"></i>
+</button>
+
 <script src="script.js"></script>
+</body>
+</html>
