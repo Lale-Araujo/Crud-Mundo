@@ -1,0 +1,361 @@
+/* ===========================
+   RESET & BASE
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+button, button:focus, button:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body, button, i {
+  user-select: none;
+}
+
+body {
+  font-family: sans-serif;
+  color: #fff;
+  background-color: #19110e;
+  height: 100vh;
+  cursor: pointer;
+}
+
+/* ===========================
+   SCROLLBAR
+   =========================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2733;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dcbfff;
+}
+
+/* ===========================
+   MAPA MUNDO
+   =========================== */
+.world-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  height: max-content;
+  min-width: 30em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 100vw;
+  height: 100vh;
+}
+
+path {
+  fill: #254650;
+  stroke: #82c4d6;
+  transition: 100ms;
+}
+
+path:hover {
+  fill: #82c4d6;
+}
+
+/* ===========================
+   SIDE PANELS (Cards flutuantes)
+   =========================== */
+.side-panel-info,
+.side-panel-clima,
+.side-panel-cities {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  padding: 20px;
+  background: rgba(45, 39, 51, 0.85);
+  border-radius: 20px;
+  border: 2px solid #82c4d6;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, left 0.2s ease, top 0.2s ease;
+  z-index: 9999;
+  box-sizing: border-box;
+}
+
+.side-panel-info.show,
+.side-panel-clima.show,
+.side-panel-cities.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-panel-info .container,
+.side-panel-clima .container,
+.side-panel-cities .container {
+  padding: 0;
+}
+
+.side-panel-info .country-name,
+.side-panel-clima .country-name,
+.side-panel-cities .country-name {
+  text-align: center;
+  font-size: 1.4em;
+  color: #82c4d6;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.side-panel-info .country-flag,
+.side-panel-clima .country-flag,
+.side-panel-cities .country-flag {
+  display: block;
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin: 0 auto 15px auto;
+}
+
+/* Título azul para seções internas (ex: Cidades Cadastradas) */
+.side-panel-cities .cities-title {
+  color: #82c4d6;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Listas e tabelas de informações */
+.side-panel-info ul,
+.side-panel-clima ul,
+.side-panel-cities ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.side-panel-info li,
+.side-panel-clima li,
+.side-panel-cities li {
+  margin-bottom: 10px;
+}
+
+.side-panel-info li strong,
+.side-panel-clima li strong,
+.side-panel-cities li strong {
+  color: #82c4d6;
+  font-size: 1.1em;
+}
+
+.side-panel-info li span,
+.side-panel-clima li span,
+.side-panel-cities li span {
+  color: #fff;
+  font-weight: 300;
+  font-size: 0.95em;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+/* Tabela de cidades cadastradas */
+.side-panel-cities table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.side-panel-cities td {
+  padding: 6px 0;
+  color: white;
+  font-weight: 300;
+  font-size: 0.95em;
+}
+
+.side-panel-cities .btn-city-weather {
+  background: none;
+  border: none;
+  color: #82c4d6;
+  cursor: pointer;
+}
+
+.side-panel-cities .btn-city-weather i {
+  font-size: 1em;
+}
+
+/* Botão redondo de fechar */
+.close-btn-info,
+.close-btn-clima,
+.close-btn-cities {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #833434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.close-btn-info i,
+.close-btn-clima i,
+.close-btn-cities i {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* ===========================
+   ZOOM CONTROLS
+   =========================== */
+.zoom-controls {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
+.zoom-controls button {
+  background-color: #443d4b;
+  border: 1px #82c4d6 solid;
+  color: #fff;
+  font-size: 2em;
+  width: 1.5em;
+  height: 1.5em;
+  display: block;
+  cursor: pointer;
+}
+
+.zoom-controls button:hover {
+  background-color: #82c4d6;
+}
+
+button:disabled {
+  background-color: #1d1a20;
+  border: 1px #443d4b solid;
+  cursor: default;
+  color: #c52222;
+}
+
+.zoom-out {
+  margin-bottom: 10px;
+}
+
+/* ===========================
+   MENU CIRCULAR
+   =========================== */
+.circle-menu {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.25s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.circle-menu.active {
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.menu-btn {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background: #82c4d6;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-btn i {
+  color: white;
+  font-size: 26px;
+}
+
+.circle-menu a {
+  width: 45px;
+  height: 45px;
+  background: #444;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
+.circle-menu a:hover {
+  background: #82c4d6;
+}
+
+/* Posicionamento dos itens do menu */
+.circle-menu a:nth-child(2) { top: 0; left: 50%; transform: translate(-50%, 0); } /* Info */
+.circle-menu a:nth-child(3) { top: 50%; right: 0; transform: translate(0, -50%); } /* Clima */
+.circle-menu a:nth-child(4) { top: 50%; left: 0; transform: translate(0, -50%); } /* Editar */
+.circle-menu a:nth-child(5) { bottom: 0; left: 50%; transform: translate(-50%, 0); } /* Cidades */
+
+/* Side Panel - Clima da Cidade */
+#side-panel-city-clima {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: none; /* Inicia oculto */
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+#side-panel-city-clima.show {
+  display: block;
+}
+
+.close-btn-city-clima {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close-btn-city-clima i {
+  font-size: 20px;
+}
+
+.weather-info p {
+  margin: 10px 0;
+}
+
+.weather-info span {
+  font-weight: bold;
+}
